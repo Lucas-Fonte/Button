@@ -1,0 +1,392 @@
+body {
+  background-color: #2C2E2F;
+}
+
+.download-button-container {
+  position: fixed;
+  width: 150px;
+  height: 35px;
+  left: 22%;
+  bottom: 10%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.download-button-container.downloading .download-button {
+  width: 35px;
+}
+
+.download-button-container.downloading .button-text-download {
+  top: 80%;
+  -webkit-transform: translateY(-50%) scale(1);
+      -ms-transform: translateY(-50%) scale(1);
+          transform: translateY(-50%) scale(1);
+  opacity: 0;
+}
+
+.download-button-container.downloading .button-wave {
+  left: -10px;
+}
+
+.download-button-container.downloading .button-wave:before {
+  background-color: transparent;
+  -webkit-transform: scale(1.6);
+      -ms-transform: scale(1.6);
+          transform: scale(1.6);
+}
+
+.download-button-container.downloading .button-icon-svg {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.download-button-container.downloading .button-icon-path-square {
+  fill: white;
+}
+
+.download-button-container.progressing .button-icon {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.download-button-container.progressing .button-ball {
+  left: -35px;
+  top: -30px;
+  width: 7px;
+  height: 7px;
+}
+
+.download-button-container.completed .download-button {
+  width: 115px;
+}
+
+.download-button-container.completed .button-icon {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.download-button-container.completed .button-icon, .download-button-container.completed .button-svg {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.download-button-container.completed .button-text-done {
+  -webkit-transform: translate(-25%, -25%);
+      -ms-transform: translate(-25%, -25%);
+          transform: translate(-25%, -25%);
+  opacity: 1;
+  transition: 0.8s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* easeOutBack */
+}
+
+.download-button-container.completed .border-path {
+  stroke: rgb(255, 230, 0);
+}
+
+.download-button-container.completed .button-ball {
+  left: 50%;
+  transition: none;
+  -webkit-animation: ball-throw-up 0.5s ease-out forwards, ball-throw-down 0.5s 0.5s ease-in forwards, ball-rubber 1s forwards;
+          animation: ball-throw-up 0.5s ease-out forwards, ball-throw-down 0.5s 0.5s ease-in forwards, ball-rubber 1s forwards;
+}
+
+@-webkit-keyframes ball-throw-up {
+  from {
+    -webkit-transform: translate(-50%, 8.5px);
+            transform: translate(-50%, 8.5px);
+  }
+  to {
+    -webkit-transform: translate(-50%, -30px);
+            transform: translate(-50%, -30px);
+    background-color: #00FF8D;
+  }
+}
+
+@keyframes ball-throw-up {
+  from {
+    -webkit-transform: translate(-50%, 8.5px);
+            transform: translate(-50%, 8.5px);
+  }
+  to {
+    -webkit-transform: translate(-50%, -30px);
+            transform: translate(-50%, -30px);
+    background-color: #00FF8D;
+  }
+}
+
+@-webkit-keyframes ball-throw-down {
+  from {
+    -webkit-transform: translate(-50%, -30px);
+            transform: translate(-50%, -30px);
+  }
+  to {
+    -webkit-transform: translate(-50%, 40px);
+            transform: translate(-50%, 40px);
+  }
+}
+
+@keyframes ball-throw-down {
+  from {
+    -webkit-transform: translate(-50%, -30px);
+            transform: translate(-50%, -30px);
+  }
+  to {
+    -webkit-transform: translate(-50%, 40px);
+            transform: translate(-50%, 40px);
+  }
+}
+
+@-webkit-keyframes ball-rubber {
+  from {
+    width: 9px;
+  }
+  25% {
+    width: 6.7px;
+  }
+  50% {
+    width: 9px;
+  }
+  to {
+    width: 4.5px;
+  }
+}
+
+@keyframes ball-rubber {
+  from {
+    width: 9px;
+  }
+  25% {
+    width: 6.7px;
+  }
+  50% {
+    width: 9px;
+  }
+  to {
+    width: 4.5px;
+  }
+}
+
+.download-button {
+  padding:2px;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 35px;
+  background-color: #2C2E2F;
+  border: none;
+  box-shadow: 0 0 0 3px rgb(238, 255, 2);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 1s width, 0.3s box-shadow;
+
+}
+
+.download-button, .download-button:focus {
+  padding: 0;
+  outline: none;
+}
+
+.download-button::-moz-focus-inner {
+  border: 0;
+}
+
+.download-button:hover, .download-button:active, .download-button:focus {
+  box-shadow: 0 0 0 3px rgb(255, 137, 2), 0 0 20px 3px #ff943c;
+}
+
+.download-button.button-hidden {
+  box-shadow: 0 0 0 3px transparent;
+}
+
+.download-button.button-hidden:hover, .download-button.button-hidden:active, .download-button.button-hidden:focus {
+  box-shadow: 0 0 0 3px transparent, 0 0 20px 3px #ff943c;
+}
+
+.button-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  background-color: rgb(209, 255, 2);
+  border-radius: 100%;
+}
+
+.button-icon-svg {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg);
+  transition: 1s -webkit-transform;
+  transition: 1s transform;
+  transition: 1s transform, 1s -webkit-transform;
+}
+
+.button-icon-path {
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  stroke: white;
+}
+
+.button-icon-path-square {
+  transition: 0.8s 0.2s fill;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  color: white;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.button-text-download {
+  left: 60px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  transition: top 0.3s 0.2s, opacity 0.3s 0.2s, -webkit-transform 1s;
+  transition: transform 1s, top 0.3s 0.2s, opacity 0.3s 0.2s;
+  transition: transform 1s, top 0.3s 0.2s, opacity 0.3s 0.2s, -webkit-transform 1s;
+}
+
+.button-text-done {
+  left: 50%;
+  -webkit-transform: translate(-50%, 35px);
+      -ms-transform: translate(-50%, 35px);
+          transform: translate(-50%, 35px);
+  opacity: 0;
+  transition: 0.5s opacity, 1s -webkit-transform;
+  transition: 0.5s opacity, 1s transform;
+  transition: 0.5s opacity, 1s transform, 1s -webkit-transform;
+}
+
+.button-wave {
+  position: absolute;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: -9999em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.button-wave:before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: 0.5s background, 1s -webkit-transform;
+  transition: 0.5s background, 1s transform;
+  transition: 0.5s background, 1s transform, 1s -webkit-transform;
+  transition-timing-function: ease-out;
+  display: none;
+}
+
+.button-progress-container {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.button-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.button-svg .button-circular-progress {
+  fill: none;
+  stroke-width: 1px;
+  stroke: white;
+}
+
+.button-ball {
+  position: absolute;
+  left: -20;
+  top: -10;
+  width: 0;
+  height: 0;
+  background-color: rgb(173, 36, 36);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.875);
+  /* easeOutBackModified */
+  transition-property: left, top, width, height;
+}
+
+.button-linear-progress {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: rgb(255, 154, 1);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.button-linear-progress-bar {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(158, 255, 2);
+}
+
+.border-svg {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.border-path {
+  fill: #2C2E2F;
+  stroke-width: 3px;
+  stroke: rgb(255, 251, 2);
+  transition: 0.3s 1s stroke;
+}
+
+.hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
